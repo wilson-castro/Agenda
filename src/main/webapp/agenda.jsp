@@ -38,12 +38,16 @@ ArrayList<JavaBeans> contatos = (ArrayList<JavaBeans>) request.getAttribute("con
 				<td><%= contato.getNome() %></td>
 				<td><%= contato.getFone() %></td>
 				<td><%= contato.getEmail() %></td>
-				<td><a href="select?idcon=<%= contato.getIdcon() %>" class="Botao1">Editar</a></td>
+				<td>
+				<a href="select?idcon=<%= contato.getIdcon() %>" class="Botao1">Editar</a>
+				<a href="javascript: confirmar(<%= contato.getIdcon() %>)" class="Botao2">Excluir</a>
+				</td>
 			</tr>
 			<%
 			}
 			%>
 		</tbody>
 	</table>
+	<script src="scripts/confirmador.js"></script>
 </body>
 </html>

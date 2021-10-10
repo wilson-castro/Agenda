@@ -89,4 +89,43 @@ public class DAO {
         }
         
 	}
+	
+	public void alterarContato(JavaBeans contato) {
+        String sql = "UPDATE contatos SET nome=?,fone=?,email=? "
+        		+ "where idcon=?";
+        
+        try {        	
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setString(1, contato.getNome());
+			stmt.setString(2, contato.getFone());
+			stmt.setString(3, contato.getEmail());
+			stmt.setString(4, contato.getIdcon());
+			
+			stmt.executeUpdate();
+			stmt.close();
+			
+        }catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+        
+	}
+	
+	public void deletarContato(JavaBeans contato) {
+        String sql = "delete from contatos where idcon=?";
+        
+        try {        	
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			
+			stmt.setString(1, contato.getIdcon());
+			
+			stmt.executeUpdate();
+			stmt.close();
+			
+        }catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+        
+	}
 }
